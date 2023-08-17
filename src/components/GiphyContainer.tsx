@@ -26,16 +26,17 @@ const GiphyContainer: React.FC<Props> = ({ term }) => {
           height: "500px",
         }}
       >
-        {gifData?.images && (
+        {gifData?.images ? (
           <img
             srcSet={gifData?.images.original.url}
             className="w-100 h-100"
             alt=""
           />
+        ) : (
+          <div className="text-white d-flex justify-content-center align-items-center h-100">
+            <h2>No Image</h2>
+          </div>
         )}
-        <div className="text-white d-flex justify-content-center align-items-center h-100">
-          <h2>No Image</h2>
-        </div>
       </section>
     </div>
   );
