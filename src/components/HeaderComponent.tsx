@@ -1,22 +1,28 @@
-import { useState } from "react";
-import { SearchTerm } from "../interfaces/search.interface";
+import React from "react";
+import { HeaderProps } from "../interfaces/search.interface";
 
-function HeaderComponent() {
-  const [searchTerm, setSearchTerms] = useState<SearchTerm>();
-
+const HeaderComponent: React.FC<HeaderProps> = ({
+  searchTerm,
+  setSearchTerm,
+}) => {
   return (
     <header>
       <form className="w-50 mx-auto">
         <div className="form-group">
           <input
-            className="form-control text-center text-capitalize"
+            className="form-control text-center fst-italic"
             type="text"
             placeholder="Search a Gif"
+            value={searchTerm}
+            onChange={(e) => {
+              e.preventDefault();
+              setSearchTerm(e.target.value);
+            }}
           />
         </div>
       </form>
     </header>
   );
-}
+};
 
 export default HeaderComponent;
